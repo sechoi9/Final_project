@@ -2,6 +2,7 @@
 Final project repo for 4324BIOL Bioinformatics
 
 Data for the project was found on NCBI SRA. Added to the collection named Final Project.
+https://www.ncbi.nlm.nih.gov/sites/myncbi/sae hee.choi.1/collections/64607176/public/
 
 ## Download the files using SRA toolkit
 ### codes used to download the files onto opuntia in working directory
@@ -36,7 +37,13 @@ java -jar /project/stuckert/sechoi2/Trimmomatic-0.39/trimmomatic-0.39.jar
 ## Run Transcriptome Assembly
 ### Used script Trinity.sh
 1. Need to change file name in the script for each one before running
-2. Running 2 transcriptome assemblies
-3. Tried running one with 3 samples per transcriptome, but was unsuccessful due to lack of storage.
+2. Running 2 transcriptome assemblies one for primary and one for metastasis
+3. Tried running one with 3 samples per transcriptome, but was unsuccessful due to lack of storage. (file over 200GB for an unfinished assembly)
 4. Re-ran with 1 sample per transcriptome.
+
+5. Re-ran again with 2 samples per transcriptome assembly on cluster when space was added!
+     1. singularity run -B /project/stuckert/sechoi2 trinity.sif
+     2. $TRINITY_HOME/util/trinity.sif --seqType fq --left "/project/stuckert/sechoi2/final_project/metastasis/mt_SRR30633885_TRIM_1P.fastq,/project/stuckert/sechoi2/final_project/metastasis/mt_SRR30633888_TRIM_1P.fastq,/project/stuckert/sechoi2/final_project/primary/pm_SRR30633887_TRIM_1P.fastq,/project/stuckert/sechoi2/final_project/primary/pm_SRR30633889_TRIM_1P.fastq" \
+   --right "/project/stuckert/sechoi2/final_project/metastasis/mt_SRR30633885_TRIM_2P.fastq,/project/stuckert/sechoi2/final_project/metastasis/mt_SRR30633888_TRIM_2P.fastq,/project/stuckert/sechoi2/final_project/primary/pm_SRR30633887_TRIM_2P.fastq,/project/stuckert/sechoi2/final_project/primary/pm_SRR30633889_TRIM_2P.fastq" \
+   --CPU 20 --max_memory 60G --trinity_complete --full_cleanup
 
