@@ -1,0 +1,34 @@
+#### Code to run TRINITY locally
+
+## Making the assembly
+${TRINITY_HOME}/Trinity --seqType fq  --samples_file data/samples.txt \
+      --CPU 30 --max_memory 60G --min_contig_length 150
+
+## Running salmon to get the counts
+# For Primary
+$TRINITY_HOME/util/align_and_estimate_abundance.pl --seqType fq  \
+    --samples_file ./PM_samples.txt  --transcripts PM.Trinity.fasta \
+    --est_method salmon  --trinity_mode   --prep_reference 
+# For Metastasis    
+$TRINITY_HOME/util/align_and_estimate_abundance.pl --seqType fq  \
+    --samples_file ./MT_samples.txt  --transcripts MT.Trinity.fasta \
+    --est_method salmon  --trinity_mode   --prep_reference 
+
+
+## Generate a transcript counts matrix and perform cross-sample normalization:
+
+find PM_* MT_* -name "quant.sf" | tee quant_files.list
+PM_SRR30633889/quant.sf
+MT_SRR30633889/quant.sf
+    
+    
+$TRINITY_HOME/util/abundance_estimates_to_matrix.pl --est_method salmon \
+--out_prefix Trinity --name_sample_by_basedir \
+--quant_files PM_quant_files.list \
+--gene_trans_map PM.Trinity.fasta.gene_trans_map
+
+
+$TRINITY_HOME/util/abundance_estimates_to_matrix.pl --est_method salmon \
+--out_prefix Trinity --name_sample_by_basedir \
+--quant_files MT_quant_files.list \
+--gene_trans_map MT.Trinity.fasta.gene_trans_map
