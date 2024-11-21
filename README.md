@@ -40,6 +40,11 @@ java -jar /project/stuckert/sechoi2/Trimmomatic-0.39/trimmomatic-0.39.jar
 2. Continue for all samples of the transcriptome
 3. For some files, this took too long to run successfully using the compute node so I used the trim.sbatch script and submitted it as a job on the carya cluster.
 
+### Run FastQC on samples
+1. Installed fastQC locally using: sudo apt-get fastqc
+2. ran code in primary directory: fastqc -o PM_fastqc_output_dir *1P.fastq *2P.fastq
+3. ran code in metastasis directory: fastqc -o MT_fastqc_output_dir *1P.fastq *2P.fastq
+4. Output saved in repo in PM_fastqc_output_dir and MT_fastqc_output_dir
 
 ## Run Transcriptome Assembly
 ### Used codes to try in carya cluster (did not have permissions)
