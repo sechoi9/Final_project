@@ -80,5 +80,7 @@ Trinity --SS_lib_type RF --no_version_check --seqType fq --output trinity/ --max
 
 ### Gene Expression was not reached due to time constraints however the full Terminal log of the successful assembly is labeled Full_Terminal_log.txt
 
+### PDFs of the final output plots from DESEq2 are in the DESeq2_trans directory
+
 
 
