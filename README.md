@@ -66,8 +66,19 @@ Trinity --SS_lib_type RF --no_version_check --seqType fq --output trinity/ --max
 ### Tried re-running with 1 sample per transcriptome locally 
 #### WORKED (used codes in TRINITY_locally file in repo)
 
-### Used codes in TRINITY_locally to generate counts and a matrix
 
-### Used codes script merge_matrix.sh to merge the primary and metastasis so they can be compared to each other
+### Used codes in TRINITY_locally to generate counts and a matrix
+#### Counts and results files for both primary and metastasis in the results.zip file
+
+### DESeq2 run
+1. Used codes script merge_matrix.sh to merge the primary and metastasis so they can be compared to each other
+2. DESeq2 would not work with a single replicate so the single replicate of primary and metastasis each were duplicated twice and modified to create synthetic data with very minimal changes in order to run DEseq2
+   The initial matrix is called: Trinity.isoform.counts.matrix
+   The resulting matrix from the duplication is labeled: Trinity.isoform.3rep.counts.matrix
+   The Modified matrix with the synthetic replicates is Modified_Trinity_Limited_Variation.isoform.3rep.counts.matrix
+   
+
+### Gene Expression was not reached due to time constraints however the full Terminal log of the successful assembly is labeled Full_Terminal_log.txt
+
 
 
